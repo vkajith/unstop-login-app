@@ -14,6 +14,7 @@ import UserIcon from '../assets/account_circle.svg';
 import EmailIcon from '../assets/mail.svg';
 import GoogleIcon from '../assets/google.svg';
 import FacebookIcon from '../assets/facebook.svg';
+import { NOOP } from '@/lib/utils';
 
 const loginSchema = z.object({
   username: z
@@ -79,7 +80,7 @@ const Login: React.FC = () => {
       <Button
         type="button"
         variant="thridParty"
-        onClick={() => {}}
+        onClick={NOOP}
         className="flex bg-background items-center text-black justify-center gap-2.5 h-[78px] px-[243px] py-[21px] rounded-2xl"
       >
         <img src={GoogleIcon} alt="Google" />
@@ -88,7 +89,7 @@ const Login: React.FC = () => {
       <Button
         type="button"
         variant="thridParty"
-        onClick={() => {}}
+        onClick={NOOP}
         className="flex bg-background items-center text-black justify-center gap-2.5 h-[78px] px-[243px] py-[21px] rounded-2xl"
       >
         <img src={FacebookIcon} alt="Facebook" />
@@ -148,7 +149,7 @@ const Login: React.FC = () => {
   );
 
   return (
-    <div className="flex min-h-screen w-full bg-background-secondary">
+    <div className="flex min-h-screen bg-background-secondary">
       <div className="hidden lg:flex lg:flex-1 items-center justify-center p-8">
         <img src={loginIllustration} alt="Login illustration" className="max-w-md w-full" />
       </div>
@@ -196,7 +197,7 @@ const Login: React.FC = () => {
           </Button>
         </form>
 
-        <div className="flex items-center justify-center">
+        <div className="flex items-center justify-center mt-4">
           <span className="font-poppins text-base font-normal leading-[22px]">
             Don't have an account?
           </span>
