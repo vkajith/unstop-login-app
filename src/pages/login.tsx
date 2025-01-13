@@ -22,7 +22,7 @@ const loginSchema = z.object({
     .min(1, 'Username is required')
     .refine((val) => val === 'emilys', 'Username must be emilys'),
   email: z.string().email('Please enter a valid email'),
-  password: z.string().min(6, 'Password must be at least 6 characters'),
+  password: z.string().min(8, 'Password must be at least 8 characters'),
 });
 
 type LoginFormData = z.infer<typeof loginSchema>;
@@ -109,7 +109,7 @@ const Login: React.FC = () => {
               icon={UserIcon}
               required
               {...field}
-              label="user name"
+              label="User name"
               error={errors.username?.message}
             />
           )}
@@ -124,7 +124,7 @@ const Login: React.FC = () => {
               icon={EmailIcon}
               required
               {...field}
-              label="email"
+              label="Email"
               error={errors.email?.message}
             />
           )}
@@ -139,7 +139,7 @@ const Login: React.FC = () => {
               icon={KeyIcon}
               required
               {...field}
-              label="password"
+              label="Password"
               error={errors.password?.message}
             />
           )}
@@ -158,7 +158,7 @@ const Login: React.FC = () => {
         <form onSubmit={handleSubmit(handleLogin)} className="w-full max-w-[500px] lg:max-w-none">
           <div className="mb-[32px]">
             <div className="font-poppins text-[36px] font-medium leading-[48px]">Welcome to</div>
-            <div className="font-poppins text-[46px] font-black leading-[63px] text-purple">
+            <div className="font-poppins text-[46px] leading-[63px] text-purple font-[900]">
               Unstop
             </div>
           </div>

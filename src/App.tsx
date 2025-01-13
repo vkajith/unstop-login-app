@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider } from './contexts/auth.context';
-import { ProtectedRoute } from './components/ProtectedRoute';
+import { ProtectedRoute } from './utils/ProtectedRoute';
 import Login from './pages/login';
 import Home from './pages/home';
 import { Toaster } from './components/ui/toaster';
