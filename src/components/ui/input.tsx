@@ -2,6 +2,8 @@ import * as React from 'react';
 import Icon from './icon';
 import { cn } from '@/lib/utils';
 import { Label } from './label';
+import { useState } from 'react';
+import VisibilityIcon from '../../assets/visibility.svg';
 
 export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   className?: string;
@@ -11,7 +13,9 @@ export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> 
 }
 
 const Input = React.forwardRef<HTMLInputElement, InputProps>(
-  ({ type, label, required, icon, ...props }, ref) => {
+  ({ label, required, icon, ...props }, ref) => {
+    const [showPassword, setShowPassword] = useState(false);
+
     return (
       <div className="flex flex-row gap-2 bg-background-secondary p-4 rounded-2xl">
         <div className="flex-col gap-2 flex items-center justify-center mr-2">
@@ -20,12 +24,17 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
         <div className="flex-1 flex-col gap-2">
           {label && <Label className={cn(required && 'required')}>{label}</Label>}
           <input
-            type={type}
+            type={label === 'password' && !showPassword ? 'password' : 'text'}
             className="w-full bg-transparent font-poppins text-base font-bold leading-6 outline-none border-none focus:ring-0"
             ref={ref}
             {...props}
           />
         </div>
+        {label === 'password' && (
+          <button type="button" onClick={() => setShowPassword(!showPassword)}>
+            <Icon iconSrc={VisibilityIcon} />
+          </button>
+        )}
       </div>
     );
   }
